@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './styles/index.css';
-import { extendTheme } from "@chakra-ui/react"
-
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
 import { ErrorBoundery } from './ErrorBoundery.tsx';
 
@@ -26,6 +24,7 @@ const theme = extendTheme({
     orange: '#F56565'
   },
 })
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
