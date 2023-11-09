@@ -12,7 +12,7 @@ export default {
       'white': '#fff',
       'black': '#000',
       'primary': '#7A52B3',
-      'seccondary': '#00B7BF',
+      'secondary': '#00B7BF',
       'purple': '#8461EE',
       'accent': '#5829E5',
       'dark': '#1F1F21',
