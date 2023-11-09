@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import Deashboard from './pages/Dashboard';
 
 
 const Login = lazy(() => import('./pages/Login'));
@@ -17,7 +18,7 @@ export default function App() {
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <Navigate
-                to="/login"
+                to="/home"
                 replace
               />
             </Suspense>
@@ -44,6 +45,14 @@ export default function App() {
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <Register />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <Deashboard />
             </Suspense>
           }
         />
