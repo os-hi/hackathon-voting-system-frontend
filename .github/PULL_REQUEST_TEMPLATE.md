@@ -3,10 +3,10 @@
 
 ### What type of PR is this? (check all applicable)
 
-- [x] 🍕 Feature
+- [ ] 🍕 Feature
 - [ ] 🐛 Bug Fix
 - [ ] 📝 Documentation Update
-- [x] 🎨 Style
+- [ ] 🎨 Style
 - [ ] 🧑‍💻 Code Refactor
 - [ ] 🔥 Performance Improvements
 - [ ] ✅ Test
@@ -30,14 +30,14 @@ Issue: #7 As a user (All USERS), should be able to see the homepage
 Added tests?
 
 - [ ] 🙅 no, because they aren't needed
-- [x] 🙋 no, because I need help
+- [ ] 🙋 no, because I need help
 - [ ] 👍 yes, (then describe the steps you've taken to test your changes).
 
 
 ### Checklist:
 
-- [x] I have tested my changes and they work as intended.
-- [x] I have provided a clear and informative pull request description.
+- [ ] I have tested my changes and they work as intended.
+- [ ] I have provided a clear and informative pull request description.
 - [ ] My code follows the project's coding standards.
 
 ### Additional Comments:
