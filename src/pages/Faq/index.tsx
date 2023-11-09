@@ -1,5 +1,5 @@
 import NavBar from '../../components/NavBar';
-import { Card,Accordion,AccordionItem,AccordionButton,AccordionPanel,Flex,useColorModeValue,Text,Container} from '@chakra-ui/react'
+import { Card,CardBody,CardHeader, Heading,Accordion,AccordionItem,AccordionButton,AccordionPanel,Flex,useColorModeValue,Text,Container} from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom';
 
@@ -10,12 +10,14 @@ function Faq() {
        <>
        <NavBar/>
         <main className="flex">
-         <Flex
-               minH={'100vh'}
-               minW={'100vh'}
+          <Card rounded>
+           <CardHeader>
+                <Heading size='lg' fontSize='3xl'> Frequently Asked Questions </Heading>
+          </CardHeader>
+          <CardBody>
+          <Flex
                align={'center'}
-               justify={'center'}
-               bg={useColorModeValue('gray.50', 'gray.800')}>
+               justify={'center'}>
                <Container>
                  <Accordion allowMultiple width="100%" maxW="lg" rounded="lg">
                    <AccordionItem>
@@ -24,13 +26,13 @@ function Faq() {
                        alignItems="center"
                        justifyContent="space-between"
                        p={4}>
-                       <Text fontSize="md">What is Chakra UI?</Text>
+                       <Text color="#170F49" fontSize="lg" fontWeight="bold">What is the purpose of this HackVote?</Text>
                        <ChevronDownIcon fontSize="24px" />
                      </AccordionButton>
                      <AccordionPanel pb={4}>
                        <Text color="gray.600">
-                         Chakra UI is a simple and modular component library that gives developers
-                         the building blocks they need to create web applications.
+                         Lorem ipsum dolor sit amet consectetur. Sit morbi odio tellus aliquam ut scelerisque.
+                         Neque dui risus euismod ornare sit hendrerit fringilla faucibus.
                        </Text>
                      </AccordionPanel>
                    </AccordionItem>
@@ -40,14 +42,13 @@ function Faq() {
                        alignItems="center"
                        justifyContent="space-between"
                        p={4}>
-                       <Text fontSize="md">What advantages to use?</Text>
+                       <Text color="#170F49" fontSize="lg" fontWeight="bold">What happens in case of a tie or a close vote?</Text>
                        <ChevronDownIcon fontSize="24px" />
                      </AccordionButton>
                      <AccordionPanel pb={4}>
                        <Text color="gray.600">
-                         Chakra UI offers a variety of advantages including ease of use,
-                         accessibility, and customization options. It also provides a comprehensive
-                         set of UI components and is fully compatible with React.
+                       Lorem ipsum dolor sit amet consectetur. Sit morbi odio tellus aliquam ut scelerisque.
+                        Neque dui risus euismod ornare sit hendrerit fringilla faucibus.
                        </Text>
                      </AccordionPanel>
                    </AccordionItem>
@@ -57,23 +58,39 @@ function Faq() {
                        alignItems="center"
                        justifyContent="space-between"
                        p={4}>
-                       <Text fontSize="md">How to start using Chakra UI?</Text>
+                       <Text color="#170F49" fontSize="lg" fontWeight="bold">What do I do if I encounter technical issues ?</Text>
                        <ChevronDownIcon fontSize="24px" />
                      </AccordionButton>
                      <AccordionPanel pb={4}>
                        <Text color="gray.600">
-                         To get started with Chakra UI, you can install it via npm or yarn, and
-                         then import the components you need in your project. The Chakra UI
-                         documentation is also a great resource for getting started and learning
-                         more about the library.
+                             Lorem ipsum dolor sit amet consectetur. Sit morbi odio tellus aliquam ut scelerisque.
+                             Neque dui risus euismod ornare sit hendrerit fringilla faucibus.
                        </Text>
                      </AccordionPanel>
                    </AccordionItem>
+                    <AccordionItem>
+                   <AccordionButton
+                    display="flex"
+                     alignItems="center"
+                     justifyContent="space-between"
+                      p={4}>
+                      <Text color="#170F49" fontSize="lg" fontWeight="bold"> What is a Squad Leader?</Text>
+                      <ChevronDownIcon fontSize="24px" />
+                      </AccordionButton>
+                      <AccordionPanel pb={4}>
+                      <Text color="gray.600">
+                      Lorem ipsum dolor sit amet consectetur. Sit morbi odio tellus aliquam ut scelerisque.
+                       Neque dui risus euismod ornare sit hendrerit fringilla faucibus.
+                       </Text>
+                        </AccordionPanel>
+                         </AccordionItem>
                  </Accordion>
                </Container>
              </Flex>
-              </main>
-             </>
+            </CardBody>
+            </Card>
+          </main>
+         </>
     )
 }
 
