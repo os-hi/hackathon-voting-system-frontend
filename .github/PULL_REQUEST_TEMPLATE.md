@@ -3,10 +3,10 @@
 
 ### What type of PR is this? (check all applicable)
 
-- [ ] 🍕 Feature
+- [x] 🍕 Feature
 - [ ] 🐛 Bug Fix
 - [ ] 📝 Documentation Update
-- [ ] 🎨 Style
+- [x] 🎨 Style
 - [ ] 🧑‍💻 Code Refactor
 - [ ] 🔥 Performance Improvements
 - [ ] ✅ Test
@@ -17,30 +17,27 @@
 
 ### Description:
 
-[Link to the relevant Github issue (Please provide descriptive your github issues).]
-
-For example:
-
-Issue: #1 As a user, I want to create a Pull Request Template.
+Issue: #7 As a user (All USERS), should be able to see the homepage
 
 **Changes Made:**
 
-- [List the specific changes you've made or the files you've modified.]
-- [Use bullet points for clarity.]
+* Create a main homepage
+* Display an example of the hackathon events in the homepage
+* Add custom hook (useFetch)
 
 ### Testing:
 
 Added tests?
 
 - [ ] 🙅 no, because they aren't needed
-- [ ] 🙋 no, because I need help
+- [x] 🙋 no, because I need help
 - [ ] 👍 yes, (then describe the steps you've taken to test your changes).
 
 
 ### Checklist:
 
-- [ ] I have tested my changes and they work as intended.
-- [ ] I have provided a clear and informative pull request description.
+- [x] I have tested my changes and they work as intended.
+- [x] I have provided a clear and informative pull request description.
 - [ ] My code follows the project's coding standards.
 
 ### Additional Comments:
