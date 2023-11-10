@@ -13,7 +13,7 @@ const useFetch = (url: string) => {
         axios.get(apiUrl)
           .then(response => {
             // Update the state with the fetched event data
-            setData(response.data.data[0]);
+            setData(response.data.data);
             setIsLoading(false)
             setError(null)
           })
