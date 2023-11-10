@@ -1,8 +1,6 @@
 import NavBar from '../../components/NavBar';
-import { Card,CardBody,CardHeader, Heading,Accordion,AccordionItem,AccordionButton,AccordionPanel,Flex,useColorModeValue,Text,Container} from '@chakra-ui/react'
+import { Card,CardBody,CardHeader, Heading,Accordion,AccordionItem,AccordionButton,AccordionPanel,Flex,Text,Container} from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
-import { Link } from 'react-router-dom';
-
 
 
 function Faq() {
@@ -10,7 +8,7 @@ function Faq() {
        <>
        <NavBar/>
         <main className="flex">
-          <Card rounded>
+          <Card >
            <CardHeader>
                 <Heading size='lg' fontSize='3xl'> Frequently Asked Questions </Heading>
           </CardHeader>
