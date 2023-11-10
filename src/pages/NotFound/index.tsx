@@ -17,7 +17,7 @@ function NotFound() {
                    width="300"
                />
                   <Container>
-                 <Heading margin="4"> Unauthorised Access</Heading>
+                 <Heading margin="4"> Unauthorized Access</Heading>
                  <Text fontSize='lg'  margin="4" > We are sorry...</Text>
                  <Text fontSize='md'  margin="4"> The page you are trying has restricted access. Please try again.</Text>
                  <Button className='w-full bg-secondary text-white rounded-full p-3 hover:bg-accent' onClick={redirectToLogin}> Go back</Button>
