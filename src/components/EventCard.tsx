@@ -1,32 +1,32 @@
 import { Card,Image, CardHeader, CardBody, Heading, Grid, GridItem, Text, CardFooter, Button, Box } from '@chakra-ui/react'
 const EventCard = (props) => {
     return ( 
-        <Card maxW='lg' maxH='lg'>
+        <Card maxW='md' maxH='md' boxShadow="xl">
             <CardHeader>
-                <Image src='./src/assets/banner.jpg' alt='Banner' />
-                <Heading size='lg'>{props.event.topic}</Heading>
+                <Image src='./src/assets/banner.jpg' alt='Banner' width={'100%'} height='120px'/>
+                <Heading size='md'>{props.event.topic}</Heading>
             </CardHeader>
             <CardBody>
                 <Grid templateColumns='repeat(5, 1fr)' gap={12}>
                     <GridItem colSpan={3}>
-                        <Text fontWeight='bold' fontSize='lg' >Date</Text>
-                        <Text fontSize='md'>{props.event.start_date}</Text>
+                        <Text fontWeight='bold' fontSize='sm' >Date</Text>
+                        <Text fontSize='small'>{props.event.start_date}</Text>
                     </GridItem>
                     <GridItem colSpan={2}>
-                        <Text fontWeight='bold' fontSize='lg'>Venue</Text>
-                        <Text fontSize='md'>{props.event.venue}</Text>
+                        <Text fontWeight='bold' fontSize='sm'>Venue</Text>
+                        <Text fontSize='small'>{props.event.venue}</Text>
                     </GridItem>
                 </Grid>
                 <Box>
-                    <Text fontWeight='bold' fontSize='lg' mt='2'>Description</Text>
-                    <Text fontSize='md'>{props.event.description}</Text>
+                    <Text fontWeight='bold' fontSize='sm' mt='2'>Description</Text>
+                    <Text fontSize='small'>{props.event.description}</Text>
                 </Box>
             </CardBody>
             <CardFooter>
-                <Button bg='purple.50' color='white' size='lg' flex='1' mt='2'>
+                <Button bg='purple.50' color='white' size='md' flex='1'>
                     View
                 </Button>
-            </CardFooter>
+            </CardFooter >
         </Card>
      );
 }
