@@ -14,6 +14,5 @@ const Deashboard = () => {
         </div>
      );
 }
- 
 export default Deashboard;
->>>>>>> oshi-developer
+
