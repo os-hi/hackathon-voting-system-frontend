@@ -1,4 +1,3 @@
-
 # Pull Request Template
 
 ### What type of PR is this? (check all applicable)
@@ -17,13 +16,16 @@
 
 ### Description:
 
-Issue: #7 As a user (All USERS), should be able to see the homepage
+[Link to the relevant Github issue (Please provide descriptive your github issues).]
+
+For example:
+
+Issue: #1 As a user, I want to create a Pull Request Template.
 
 **Changes Made:**
 
-* Create a main homepage
-* Display an example of the hackathon events in the homepage
-* Add custom hook (useFetch)
+- [List the specific changes you've made or the files you've modified.]
+- [Use bullet points for clarity.]
 
 ### Testing:
 
@@ -32,6 +34,7 @@ Added tests?
 - [ ] 🙅 no, because they aren't needed
 - [ ] 🙋 no, because I need help
 - [ ] 👍 yes, (then describe the steps you've taken to test your changes).
+
 
 
 ### Checklist:
@@ -43,9 +46,3 @@ Added tests?
 ### Additional Comments:
 
 [Any additional comments, notes, or context you'd like to add.]
-
-### [optional] Are there any post-deployment tasks we need to perform?
-
-
-
-### [optional] What gif best describes this PR or how it makes you feel?
