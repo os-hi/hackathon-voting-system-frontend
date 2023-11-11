@@ -34,10 +34,8 @@ function LoginForm() {
     }),
     onSubmit: async (values) => {
       try {
-        console.log('asdasd');
         // Simulate a login request to the backend
-        const response = await axios.post(authAPI.LOGIN, values, 
-
+        const response = await axios.post(authAPI.LOGIN, values,
         {
           headers: {
             'Content-Type': 'application/json'
@@ -46,7 +44,8 @@ function LoginForm() {
 
         // Handle successful login (e.g., store tokens, redirect)
         console.log('Login successful', response.data);
-        dispatch(setLoginToken(response.data))
+        // dispatch(setLoginToken(response.data.access_token))
+        localStorage.setItem('token', response.data.access_token);
         navigate('/dashboard');
         // Redirect to the dashboard or any other page
         // You can use React Router for routing
