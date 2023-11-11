@@ -37,6 +37,7 @@ function LoginForm() {
         console.log('asdasd');
         // Simulate a login request to the backend
         const response = await axios.post(authAPI.LOGIN, values, 
+
         {
           headers: {
             'Content-Type': 'application/json'

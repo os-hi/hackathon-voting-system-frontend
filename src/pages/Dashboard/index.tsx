@@ -19,10 +19,10 @@ const Dashboard = () => {
         setTab(2)
     }
     return ( 
-        <div className='w-full h-full flex'>
+        <div className='w-full h-full flex relative'>
             <SideBar dashboardTab={dashboardTab} myEventsTab={myEventsTab} />
-            <div className='w-full h-full relative p-10 flex-col'>
-                <div className=" w-full h-full shadow-2xl rounded-lg p-10 flex flex-col">
+            <div className='w-full h-full relative p-20 flex-col'>
+                <div className=" w-11/12 h-auto absolute shadow-2xl rounded-lg p-10 flex flex-col">
                     {event && tab === 1 ? <DashboardTab event={event.events}/> : <MyEventsTab user_role='organizer'/>}
                 </div>
             </div>
