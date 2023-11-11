@@ -7,7 +7,6 @@ const EventDetails = () => {
     const {id} = useParams();
     const url = "https://oyster-app-wizuy.ondigitalocean.app/api/events/"
     const {data, isLoading, error} = useFetch(url + id)
- 
 
     if (error) return <p>{error}</p>
     if (isLoading) return  <p>Loading...</p>
@@ -68,7 +67,7 @@ const EventDetails = () => {
                                             </div>
                                             ))
                                         )}
-                                       
+
                                     </div>
                                 </div>
                                 <button className="w-60 h-14 p-3 bg-purple rounded-lg text-white font-bold text-center hover:bg-accent">Add a Winner</button>

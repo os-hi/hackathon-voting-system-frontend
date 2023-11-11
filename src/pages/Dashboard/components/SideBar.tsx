@@ -3,6 +3,7 @@ import { Divider } from '@chakra-ui/react';
 import PropTypes from "prop-types";
 import DbLogo from './DbLogo';
 
+
 const SideBar = ({dashboardTab, myEventsTab}) => {
     return ( 
         <header className="w-80 h-full pl-8 pt-5 relative box-border">
@@ -20,7 +21,9 @@ const SideBar = ({dashboardTab, myEventsTab}) => {
             </div>
             <div>
                 <button className="w-full p-3">
-                    Log Out
+                <Link to='/login'>
+                    Logout
+                </Link>
                 </button>
             </div>                
         </header>
