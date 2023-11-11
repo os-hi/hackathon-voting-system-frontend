@@ -1,12 +1,15 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+
 import EventDetails from './pages/Dashboard/pages/EventDetails.tsx';
 import CreateEvents from './pages/Dashboard/components/CreateEvent/index.tsx';
+
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const Home = lazy(() => import('./pages/Home'));
+const Faq = lazy(() => import('./pages/Faq'));
 
 export default function App() {
   return (
@@ -75,6 +78,14 @@ export default function App() {
           path="*"
           element={<NotFound />}
         />
+         <Route
+              path="/faq"
+                element={
+                <Suspense fallback={<h1>Loading ...</h1>}>
+                 <Faq />
+                  </Suspense>
+                  }
+                />
       </Routes>
     </main>
   );

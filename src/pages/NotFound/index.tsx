@@ -1,32 +1,30 @@
-import { useEffect, useState } from 'react';
-import { Spinner } from '@chakra-ui/react';
+import { Image,Heading,Card,CardBody,Container, Button, Text} from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom';
 
-export default function NotFound() {
-  const [mountLoading, setMountLoading] = useState(false);
+function NotFound() {
 
   const navigate = useNavigate();
   const redirectToLogin = () => navigate('/login', { replace: true });
 
-  useEffect(() => {
-    setTimeout(() => setMountLoading(true), 800);
-    setTimeout(() => setMountLoading(false), 2000);
-    setTimeout(() => redirectToLogin(), 2000);
-
-    () => {
-      return clearTimeout;
-    };
-  }, []);
-
   return (
-    <div className="h-screen w-screen items-center justify-center flex flex-col gap-2">
-      <h1>404 Page Not Found</h1>
-      {mountLoading && (
-        <div className="flex gap-2 items-center justify-center">
-          <Spinner size="sm" />
-          <h1>Redirecting to Login</h1>
-        </div>
-      )}
-    </div>
-  );
+        <Card boxShadow='2xl' >
+           <CardBody align='center' >
+             <div className='flex flex-col w-full'>
+              <Image
+                   src='src/assets/unauthorizedLogo.svg'
+                   alt='Green double couch with wooden legs'
+                   height="250"
+                   width="300"
+               />
+                  <Container>
+                 <Heading margin="4"> Unauthorized Access</Heading>
+                 <Text fontSize='lg'  margin="4" > We are sorry...</Text>
+                 <Text fontSize='md'  margin="4"> The page you are trying has restricted access. Please try again.</Text>
+                 <Button className='w-full bg-secondary text-white rounded-full p-3 hover:bg-accent' onClick={redirectToLogin}> Go back</Button>
+                </Container>
+                </div>
+             </CardBody>
+          </Card>
+    )
 }
+export default NotFound
