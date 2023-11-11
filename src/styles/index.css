@@ -8,11 +8,6 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
     scroll-padding-top: 2rem;
-    list-style: none;
-    text-decoration: none;
-    outline: none;
-    border: none;
-    appearance: none;
     background-color: #F6F8FB;
 }
 
