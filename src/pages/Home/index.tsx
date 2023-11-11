@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody, Heading, Box, Grid, GridItem, Text, CardFoo
 import { Link } from 'react-router-dom';
 export default function Home() {
 
-  const url = "https://jacereno.000webhostapp.com/api/events/"
+  const url = "https://oyster-app-wizuy.ondigitalocean.app/api/events/"
   const {data: event, isLoading, error} = useFetch(url + "1")
 
   if (error) return <p>{error}</p>
@@ -20,22 +20,22 @@ export default function Home() {
           {event && (
             <>
               <CardHeader>
-                <Heading size='lg' fontSize='6xl'>{event.topic}</Heading>
+                <Heading size='lg' fontSize='6xl'>{event.events[0].topic}</Heading>
               </CardHeader>
               <CardBody>
                 <Grid templateColumns='repeat(5, 1fr)' gap={12}>
                   <GridItem  mt='6' colSpan={3}>
                     <Text fontWeight='bold' fontSize='lg' >Date</Text>
-                    <Text fontSize='md'>{event.start_date}</Text>
+                    <Text fontSize='md'>{event.events[0].start_date}</Text>
                   </GridItem>
                   <GridItem  mt='6' colSpan={2}>
                     <Text fontWeight='bold' fontSize='lg'>Venue</Text>
-                    <Text fontSize='md'>{event.venue}</Text>
+                    <Text fontSize='md'>{event.events[0].venue}</Text>
                   </GridItem>
                 </Grid>
                   <Box mt='6'>
                     <Text fontWeight='bold' fontSize='lg'>Description</Text>
-                    <Text fontSize='md'>{event.description}</Text>
+                    <Text fontSize='md'>{event.events[0].description}</Text>
                   </Box>
               </CardBody>
               <CardFooter>   
