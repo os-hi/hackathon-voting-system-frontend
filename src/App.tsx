@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 
+import EventDetails from './pages/Dashboard/pages/EventDetails.tsx';
+import CreateEvents from './pages/Dashboard/components/CreateEvent/index.tsx';
 
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
@@ -53,6 +55,22 @@ export default function App() {
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <Dashboard />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard/events/eventdetails/:id"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <EventDetails />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard/events/addevent/"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <CreateEvents />
             </Suspense>
           }
         />
