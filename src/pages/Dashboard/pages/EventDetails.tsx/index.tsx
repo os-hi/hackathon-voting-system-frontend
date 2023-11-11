@@ -6,21 +6,22 @@ import banner from "../../../../assets/banner.jpg";
 const EventDetails = () => {
     const {id} = useParams();
     const url = "https://oyster-app-wizuy.ondigitalocean.app/api/events/"
-    const {data: events, isLoading, error} = useFetch(url + id)
+    const {data, isLoading, error} = useFetch(url + id)
+ 
 
     if (error) return <p>{error}</p>
     if (isLoading) return  <p>Loading...</p>
     return (
         <div className="w-full h-full flex">
-            <SideBar/>
+            <SideBar />
             <div className="w-full h-full relative p-10 flex">
                 <div className=" w-full h-full shadow-2xl rounded-lg flex flex-col overflow-hidden">
                     <img src={banner} alt="banner" className="w-full h-72 object-fit mb-6"/>
                     <div className="w-full h-full pl-5 flex">
-                        {events.events.map(event => (
+                        {data && data.events.map(event => (
                             <Card maxW={'2xl'} maxH={'6xl'} key={event.id}>
                                 <CardHeader>
-                                    {events &&<Heading size='2xl'>{event.topic}</Heading>}
+                                    {event &&<Heading size='2xl'>{event.topic}</Heading>}
                                 </CardHeader>
                                 <CardBody>
                                 <Grid templateColumns='repeat(5, 1fr)' gap={12} marginBottom={6}>
@@ -40,7 +41,7 @@ const EventDetails = () => {
                                     </GridItem>
                                     <GridItem colSpan={2}>
                                         <Text fontWeight='bold' fontSize='xl'>Number of Teams</Text>
-                                        {events &&<Text fontSize='md'>{events.number_of_squads}</Text>}
+                                        {data &&<Text fontSize='md'>{data.number_of_squads}</Text>}
                                     </GridItem>
                                 </Grid>
                                 <Box>
@@ -60,12 +61,14 @@ const EventDetails = () => {
                                     </div>
                                     <div>
                                         <h1 className="text-2xl font-bold">Hackathon Teams</h1>
-                                        {events.squads.map(squad => (
+                                        {data && data.events.map((event) =>
+                                            event.squads.map((squad) => (
                                             <div key={squad.squad_id}>
-                                                <h1 className="text-xl font-normal m-3">- {squad.squad_name}</h1>
-                                                
+                                                <h1 className="text-xl font-normal m-3">- {squad.name}</h1>
                                             </div>
-                                        ))}
+                                            ))
+                                        )}
+                                       
                                     </div>
                                 </div>
                                 <button className="w-60 h-14 p-3 bg-purple rounded-lg text-white font-bold text-center hover:bg-accent">Add a Winner</button>
