@@ -20,7 +20,9 @@ const SideBar = ({dashboardTab, myEventsTab}) => {
             </div>
             <div>
                 <button className="w-full p-3">
-                    Log Out
+                <Link to='/login'>
+                    Logout
+                </Link>
                 </button>
             </div>                
         </header>

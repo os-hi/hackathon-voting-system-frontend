@@ -1,9 +1,28 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/authContext';
+
+import { ActionType, setLoginToken } from '../../../actions/authActions';
+import { useContext, useEffect} from 'react';
+import { authAPI } from '../../../service/api';
+import { getLocalStorageItem } from '../../../utility/helper';
 
 function LoginForm() {
+  const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if(getLocalStorageItem('token') !== null && location.pathname === '/login') {
+      dispatch({
+        type: ActionType.LOGOUT,
+      });
+    }
+  }, [])
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -17,7 +36,7 @@ function LoginForm() {
       try {
         console.log('asdasd');
         // Simulate a login request to the backend
-        const response = await axios.post('https://oyster-app-wizuy.ondigitalocean.app/api/auth/login', values, 
+        const response = await axios.post(authAPI.LOGIN, values, 
         {
           headers: {
             'Content-Type': 'application/json'
@@ -26,7 +45,8 @@ function LoginForm() {
 
         // Handle successful login (e.g., store tokens, redirect)
         console.log('Login successful', response.data);
-        
+        dispatch(setLoginToken(response.data))
+        navigate('/dashboard');
         // Redirect to the dashboard or any other page
         // You can use React Router for routing
         // Example: history.push('/dashboard');
