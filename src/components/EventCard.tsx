@@ -1,7 +1,8 @@
 import { Card,Image, CardHeader, CardBody, Heading, Grid, GridItem, Text, CardFooter, Button, Box } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
 const EventCard = (props) => {
     return ( 
-        <Card maxW='md' maxH='md' boxShadow="xl">
+        <Card maxW='sm' maxH='md' boxShadow="xl">
             <CardHeader>
                 <Image src='./src/assets/banner.jpg' alt='Banner' width={'100%'} height='120px'/>
                 <Heading size='md'>{props.event.topic}</Heading>
@@ -22,13 +23,20 @@ const EventCard = (props) => {
                     <Text fontSize='small'>{props.event.description}</Text>
                 </Box>
             </CardBody>
-            <CardFooter>
-                <Button bg='purple.50' color='white' size='md' flex='1'>
-                    View
+            <CardFooter gap={3}>
+                <Button bg='purple.50' color='white' size='md' flex='1' onClick = {props.onView}>
+                    <Link to={`/dashboard/events/eventdetails/${props.event.id}`} className='w-full'>
+                        View
+                    </Link>
                 </Button>
+                {props.user_role === 'organizer' && (
+                    <Button bg='dark' color='white' size='md' flex='1'>
+                        Edit
+                    </Button>
+                )}
             </CardFooter >
         </Card>
      );
 }
- 
+
 export default EventCard;
