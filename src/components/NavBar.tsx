@@ -4,7 +4,7 @@ import NavLinks from "./NavLinks";
 const NavBar = () => {
     return ( 
         <header className = "fixed top-0 px-12 py-3 flex justify-between items-center w-full h-15 box-border">
-            <Link to='/home' className="flex justify-center items-center gap-3 ml-5">
+            <Link to='/home' className="flex justify-center items-center gap-3">
                 <Logo/>
             </Link>
             <NavLinks/>

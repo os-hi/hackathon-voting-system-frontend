@@ -9,11 +9,9 @@ const useFetch = (url: string) => {
         const abortController = new AbortController()
         const apiUrl = url;
     
-        // Fetch data from the API using Axios
         axios.get(apiUrl)
           .then(response => {
-            // Update the state with the fetched event data
-            setData(response.data.data[0]);
+            setData(response.data.data);
             setIsLoading(false)
             setError(null)
           })

@@ -9,14 +9,20 @@ function LoginForm() {
       email: '',
       password: '',
     },
-    validationSchema: Yup.object({
-      username: Yup.string().required('Email is required'),
+    validationSchema: Yup.object().shape({
+      email: Yup.string().email('Invalid Email').required('Email is required'),
       password: Yup.string().required('Password is required'),
     }),
     onSubmit: async (values) => {
       try {
+        console.log('asdasd');
         // Simulate a login request to the backend
-        const response = await axios.post('https://jacereno.000webhostapp.com/api/auth/login', values);
+        const response = await axios.post('https://oyster-app-wizuy.ondigitalocean.app/api/auth/login', values, 
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
 
         // Handle successful login (e.g., store tokens, redirect)
         console.log('Login successful', response.data);
@@ -42,7 +48,7 @@ function LoginForm() {
           <input
             type="text"
             id="username"
-            name="username"
+            name="email"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
