@@ -38,7 +38,7 @@ const EventCard = (props) => {
                 )}
                 {props.user_role === 'JUDGE' && (
                     <Button bg='dark' color='white' size='md' flex='1'>
-                       <Link to={`/dashboard/events/eventdetails/${props.event.id}/${props.user_id}`}>Vote</Link> 
+                       <Link to={`/dashboard/events/eventdetails/${props.event.id}/${props.user_id}`} className='w-full'>Vote</Link> 
                     </Button>
                 )}
                 

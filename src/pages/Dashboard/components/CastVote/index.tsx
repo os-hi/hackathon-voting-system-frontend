@@ -3,6 +3,7 @@ import axios from 'axios';
 import useFetch from '../../../../hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import SideBar from '../SideBar';
+import {Link} from 'react-router-dom';
 
 const CastVote = () => {
   const { id, judgeId, squadId } = useParams();
@@ -115,7 +116,7 @@ const CastVote = () => {
               </div>
             ))}
           <button onClick={(e) => handleSubmitVotes(e)} type="submit" className="bg-purple text-white py-3 px-10 rounded-lg">
-            Submit My Vote
+            <Link className="w-full" to={`/dashboard/events/scoreboard/${id}/done`}>Submit My Vote</Link>   
           </button>
         </form>
       </div>
