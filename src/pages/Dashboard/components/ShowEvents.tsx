@@ -9,7 +9,7 @@ const ShowEvents = (props) => {
                     </button>
                 )}
             {props.event.map(event => (
-                <EventCard event={event} key={event.id} user_role= {props.user_role}/>
+                <EventCard event={event} key={event.id} user_id={props.user_id} user_role= {props.user_role}/>
             ))}
         </div>
      );

@@ -25,15 +25,23 @@ const EventCard = (props) => {
             </CardBody>
             <CardFooter gap={3}>
                 <Button bg='purple.50' color='white' size='md' flex='1' onClick = {props.onView}>
-                    <Link to={`/dashboard/events/eventdetails/${props.event.id}`} className='w-full'>
+                    <Link to={`/dashboard/events/eventdetails/${props.event.id}/${props.user_id}`} className='w-full'>
                         View
                     </Link>
                 </Button>
-                {props.user_role === 'organizer' && (
+                {props.user_role === 'ORGANIZER' && (
                     <Button bg='dark' color='white' size='md' flex='1'>
-                        Edit
+                        <Link to={`/dashboard/events/eventdetails/${props.event.id}/`} className='w-full'>
+                            Edit
+                        </Link>
                     </Button>
                 )}
+                {props.user_role === 'JUDGE' && (
+                    <Button bg='dark' color='white' size='md' flex='1'>
+                       <Link to={`/dashboard/events/eventdetails/${props.event.id}/${props.user_id}`} className='w-full'>Vote</Link> 
+                    </Button>
+                )}
+                
             </CardFooter >
         </Card>
      );

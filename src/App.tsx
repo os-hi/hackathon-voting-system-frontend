@@ -1,10 +1,12 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
 
-import EventDetails from './pages/Dashboard/pages/EventDetails.tsx';
-import CreateEvents from './pages/Dashboard/components/CreateEvent/index.tsx';
-
+const VoteSubmitted = lazy(() => import('./pages/Dashboard/components/VoteSubmitted'));
+const Scoreboard = lazy(() => import('./pages/Dashboard/components/Scoreboard.tsx'));
+const CastVote = lazy(() => import('./pages/Dashboard/components/CastVote'));
+const CreateEvents = lazy(() => import('./pages/Dashboard/components/CreateEvent'));
+const Dashboard = lazy(() => import('./pages/Dashboard'));
+const EventDetails = lazy(() => import('./pages/Dashboard/pages/EventDetails.tsx'));
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -59,7 +61,7 @@ export default function App() {
           }
         />
         <Route
-          path="/dashboard/events/eventdetails/:id"
+          path="/dashboard/events/eventdetails/:id/:judgeId"
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <EventDetails />
@@ -71,6 +73,30 @@ export default function App() {
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <CreateEvents />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard/events/castvote/:id/:judgeId/:squadId"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <CastVote />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard/events/scoreboard/:id/done"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <VoteSubmitted />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard/events/scoreboard/:id"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <Scoreboard />
             </Suspense>
           }
         />

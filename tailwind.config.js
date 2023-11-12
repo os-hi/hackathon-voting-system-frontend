@@ -17,9 +17,10 @@ export default {
       'accent': '#5829E5',
       'dark': '#1F1F21',
       'light': '#F6F8FB',
-      'gray': '#8A8A8E',
+      'gray': '#DADBDD',
       'blue': '#4299E1',
       'orange': '#F56565',
+      'transparent': 'transparent',
 
     },
   },
