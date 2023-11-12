@@ -30,21 +30,36 @@ const CastVote = () => {
     event.preventDefault(); // Prevent default form submission behavior
     try {
       const eventID = id;
-      const judgeID = judgeId;
+      // const judgeID = judgeId;
       const squadID = squadId;
 
       const votesArray = Object.entries(votes).map(([event_criteria_id, rating]) => ({
         event_criteria_id: parseInt(event_criteria_id),
         rating: parseFloat(rating),
       }));
+      const loggedInUser = await axios.get(`https://oyster-app-wizuy.ondigitalocean.app/api/auth/user-profile`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+      });
+      const userID = parseInt(loggedInUser.data.id);
+      
+      const judge = await axios.get(`https://oyster-app-wizuy.ondigitalocean.app/api/events/${eventID}/judgesByUserID/${userID}`);
 
+      const judgeID = judge.data.data.judge_id;
       const response = await axios.post(
         `https://oyster-app-wizuy.ondigitalocean.app/api/events/${eventID}/judges/${judgeID}/squads/${squadID}/scores`,
+        squadVotes,
         {
-          votes: votesArray,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+          }
         }
       );
-      console.log(votesArray)
+      // console.log(votesArray)
       console.log('Votes submitted successfully:', response.data);
 
       // Reset the votes state after submission
