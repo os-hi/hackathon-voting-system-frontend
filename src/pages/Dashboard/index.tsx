@@ -47,7 +47,7 @@ const Dashboard = () => {
             <div className='w-full h-full relative p-20 flex-col'>
                 <div className=" w-11/12 h-auto absolute shadow-2xl rounded-lg p-10 flex flex-col">
                     {event && tab === 1 && <DashboardTab event={event.events}/> }
-                    {event && tab === 2 && <MyEventsTab user_role={userData && userData.roles}/> }
+                    {event && tab === 2 && <MyEventsTab user_role={userData && userData.roles} user_id={userData && userData.id}/> }
                     {/* // : <MyEventsTab user_role='organizer'/>} */}
                 </div>
             </div>

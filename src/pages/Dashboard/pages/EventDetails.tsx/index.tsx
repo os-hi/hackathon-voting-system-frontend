@@ -1,13 +1,13 @@
 import { Card, CardBody, CardHeader, Heading, GridItem, Grid, Text, Box } from "@chakra-ui/react";
 import SideBar from "../../components/SideBar";
 import useFetch from "../../../../hooks/useFetch";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import banner from "../../../../assets/banner.jpg";
 import {useState, useEffect} from 'react';
 import axios from 'axios'
 
 const EventDetails = () => {
-    const {id} = useParams();
+    const {id, judgeId} = useParams();
     const url = "https://oyster-app-wizuy.ondigitalocean.app/api/events/"
     const {data, isLoading, error} = useFetch(url + id)
     const [userData, setUserData] = useState(null);
@@ -78,7 +78,7 @@ const EventDetails = () => {
                         ))} 
                         <div className="w-full h-6xl flex flex-col">
                             <div className="w-full h-full flex justify-around p-8">
-                                <div className="w-1/2 h-full flex flex-col gap-4">
+                                <div className="w-full h-full flex flex-col gap-4">
                                     <h1 className="text-2xl font-bold">Hackathon Winner</h1>
                                     <div className="mx-5 flex justify-between items-center">
                                         <h1 className="text-4xl font-light ml-10">TBA</h1>
@@ -90,8 +90,9 @@ const EventDetails = () => {
                                         <h1 className="text-2xl font-bold">Hackathon Teams</h1>
                                         {data && data.events.map((event) =>
                                             event.squads.map((squad) => (
-                                            <div key={squad.squad_id}>
+                                            <div key={squad.squad_id} className="flex justify-between">
                                                 <h1 className="text-xl font-normal m-3" key={squad.squad_id} >- {squad.name}</h1>
+                                                <button key={squad.squad_id} className="w-20 h-12 p-3 mr-10 bg-purple rounded-lg text-white font-bold text-center hover:bg-accent"><Link className="w-full" to={`/dashboard/events/castvote/${event.id}/${judgeId}/${squad.id}`}>vote</Link></button>
                                             </div>
                                             ))
                                         )}
@@ -103,19 +104,19 @@ const EventDetails = () => {
                                         Add a Winner
                                     </button>
                                 )}
-                                {userData && userData.roles === 'JUDGE' && (
+                                {/* {userData && userData.roles === 'JUDGE' && (
                                      <button className="w-60 h-14 p-3 bg-purple rounded-lg text-white font-bold text-center hover:bg-accent">
                                         Vote
                                     </button>
-                                )}
+                                )} */}
                                 {userData && userData.roles === 'SQUAD LEADER' && (
                                      <button className="w-60 h-14 p-3 bg-dark rounded-lg text-white font-bold text-center hover:bg-accent">
-                                        View Scoreboard
+                                        <Link to={`/dashboard/events/scoreboard/${id}`}>View Scoreboard</Link>
                                     </button>
                                 )}
                                 {userData && userData.roles === 'SQUAD MEMBER' && (
                                      <button className="w-60 h-14 p-3 bg-dark rounded-lg text-white font-bold text-center hover:bg-accent">
-                                        View Scoreboard
+                                        <Link to={`/dashboard/events/scoreboard/${id}`}>View Scoreboard</Link>
                                     </button>
                                 )}
                             </div>

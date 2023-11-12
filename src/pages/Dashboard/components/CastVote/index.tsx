@@ -1,69 +1,63 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import useFetch from '../../../../hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import SideBar from '../SideBar';
 
 const CastVote = () => {
-  const { id } = useParams();
+  const { id, judgeId, squadId } = useParams();
   const url = `https://oyster-app-wizuy.ondigitalocean.app/api/criterions`;
   const { data, isLoading, error } = useFetch(url);
-  const [userData, setUserData] = useState(null);
-  const [votes, setVotes] = useState({}); // State to track votes for each criterion
+  const [votes, setVotes] = useState({});
+  const [squadVotes, setSquadVotes] = useState([]);
 
   if (error) return <p>{error}</p>;
   if (isLoading) return <p>Loading...</p>;
 
-
-    // setUserData(localStorage.getItem('token'))
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'https://oyster-app-wizuy.ondigitalocean.app/api/auth/user-profile',
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
-          }
-        );
-        console.log(response.data);
-        setUserData(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        // Handle errors
-      }
-    };
-    fetchData()
-
   // Update the votes state when a button is clicked
-  const handleVote = (criterionId, rating) => {
-    setVotes((prevVotes) => ({
-      ...prevVotes,
-      [criterionId]: rating,
-    }));
+  const handleVote = (event, criterionId, rating) => {
+    event.preventDefault(); 
+    const votePerCriteria = {
+      "event_criteria_id": criterionId,
+        "rating": rating
+    }
+    setSquadVotes(prevVotes => [...prevVotes, votePerCriteria]);
   };
 
   // Function to submit votes to the backend
-  const handleSubmitVotes = async () => {
-
+  const handleSubmitVotes = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
     try {
-      const eventId = id; 
-      const judgeId = userData.id;
-      const squadId = 1;
+      const eventID = id;
+      const judgeID = judgeId;
+      const squadID = squadId;
+
+      const votesArray = Object.entries(votes).map(([event_criteria_id, rating]) => ({
+        event_criteria_id: parseInt(event_criteria_id),
+        rating: parseFloat(rating),
+      }));
 
       const response = await axios.post(
-        `https://oyster-app-wizuy.ondigitalocean.app/api/events/${eventId}/judges/${judgeId}/squads/${squadId}/scores`,
+        `https://oyster-app-wizuy.ondigitalocean.app/api/events/${eventID}/judges/${judgeID}/squads/${squadID}/scores`,
+          votesArray,
         {
-          votes: votes,
+          headers: {
+            'Content-Type': 'application/json'
+          }
         }
       );
-        
+      console.log(votesArray)
       console.log('Votes submitted successfully:', response.data);
 
       // Reset the votes state after submission
       setVotes({});
+
+      // Add the squadVotes to the state
+      // setSquadVotes((prevSquadVotes) => [...prevSquadVotes, ...votes]);
     } catch (error) {
+      console.log(squadVotes)
+      console.log('err', votes)
+      
       console.error('Error submitting votes:', error);
     }
   };
@@ -72,7 +66,9 @@ const CastVote = () => {
     <div className="w-full h-full flex justify-center items-center p-0">
       <SideBar />
       <div className="w-full h-full px-10 pt-20">
-        <form className="w-full h-auto shadow-2xl rounded-lg p-10 flex flex-col justify-center items-center">
+        <form
+          className="w-full h-auto shadow-2xl rounded-lg p-10 flex flex-col justify-center items-center"
+        >
           {data &&
             data.map((criteria) => (
               <div key={criteria.criterion} className="w-auto h-auto flex flex-col m-5">
@@ -92,12 +88,11 @@ const CastVote = () => {
                     ))}
                   </p>
                 </div>
-
                 <div className="w-full flex justify-between bg-transparent">
                   {[1, 2, 3, 4, 5].map((rating) => (
                     <button
-                      onClick={() => handleVote(criteria.id, rating)}
-                      className="bg-light mt-2 border border-secondary text-black px-16 py-2 m-1 rounded-md hover:bg-secondary hover:text-white"
+                      onClick={(e) => handleVote(e,criteria.id, rating)}
+                      className="bg-light mt-2 border border-secondary text-black px-16 py-2 m-1 rounded-md hover:bg-secondary hover:text-white active:bg-secondary"
                       key={rating}
                     >
                       {rating}
@@ -106,7 +101,7 @@ const CastVote = () => {
                 </div>
               </div>
             ))}
-          <button onClick={handleSubmitVotes} type="button" className="bg-purple text-white py-3 px-10 rounded-lg">
+          <button onClick={(e) => handleSubmitVotes(e)} type="submit" className="bg-purple text-white py-3 px-10 rounded-lg">
             Submit My Vote
           </button>
         </form>

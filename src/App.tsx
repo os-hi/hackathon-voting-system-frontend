@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import EventDetails from './pages/Dashboard/pages/EventDetails.tsx';
 import CreateEvents from './pages/Dashboard/components/CreateEvent/index.tsx';
 import CastVote from './pages/Dashboard/components/CastVote/index.tsx';
+import Scoreboard from './pages/Dashboard/components/Scoreboard.tsx/index.tsx';
 
 const Login = lazy(() => import('./pages/Login'));
 const Register = lazy(() => import('./pages/Register'));
@@ -60,7 +61,7 @@ export default function App() {
           }
         />
         <Route
-          path="/dashboard/events/eventdetails/:id"
+          path="/dashboard/events/eventdetails/:id/:judgeId"
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <EventDetails />
@@ -76,10 +77,18 @@ export default function App() {
           }
         />
         <Route
-          path="/dashboard/events/castvote/:id"
+          path="/dashboard/events/castvote/:id/:judgeId/:squadId"
           element={
             <Suspense fallback={<h1>Loading ...</h1>}>
               <CastVote />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard/events/scoreboard/:id"
+          element={
+            <Suspense fallback={<h1>Loading ...</h1>}>
+              <Scoreboard />
             </Suspense>
           }
         />
