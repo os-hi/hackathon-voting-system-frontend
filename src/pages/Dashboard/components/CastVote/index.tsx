@@ -24,6 +24,7 @@ const CastVote = () => {
     setSquadVotes(prevVotes => [...prevVotes, votePerCriteria]);
   };
 
+  console.log(judgeId)
   // Function to submit votes to the backend
   const handleSubmitVotes = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
@@ -39,11 +40,8 @@ const CastVote = () => {
 
       const response = await axios.post(
         `https://oyster-app-wizuy.ondigitalocean.app/api/events/${eventID}/judges/${judgeID}/squads/${squadID}/scores`,
-          votesArray,
         {
-          headers: {
-            'Content-Type': 'application/json'
-          }
+          votes: votesArray,
         }
       );
       console.log(votesArray)
@@ -92,7 +90,7 @@ const CastVote = () => {
                   {[1, 2, 3, 4, 5].map((rating) => (
                     <button
                       onClick={(e) => handleVote(e,criteria.id, rating)}
-                      className="bg-light mt-2 border border-secondary text-black px-16 py-2 m-1 rounded-md hover:bg-secondary hover:text-white active:bg-secondary"
+                      className="bg-light mt-2 border border-secondary text-black px-16 py-2 m-1 rounded-md hover:bg-secondary hover:text-white click:bg-secondary click:text-white"
                       key={rating}
                     >
                       {rating}
