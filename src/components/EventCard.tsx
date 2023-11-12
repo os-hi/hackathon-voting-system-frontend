@@ -29,11 +29,19 @@ const EventCard = (props) => {
                         View
                     </Link>
                 </Button>
-                {props.user_role === 'organizer' && (
+                {props.user_role === 'ORGANIZER' && (
                     <Button bg='dark' color='white' size='md' flex='1'>
-                        Edit
+                        <Link to={`/dashboard/events/eventdetails/${props.event.id}`} className='w-full'>
+                            Edit
+                        </Link>
                     </Button>
                 )}
+                {props.user_role === 'JUDGE' && (
+                    <Button bg='dark' color='white' size='md' flex='1'>
+                       <Link to={`/dashboard/events/castvote/${props.event.id}`}>Vote</Link> 
+                    </Button>
+                )}
+                
             </CardFooter >
         </Card>
      );
