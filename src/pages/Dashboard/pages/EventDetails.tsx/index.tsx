@@ -34,6 +34,23 @@ const EventDetails = () => {
         fetchData(); // Call your function when the component mounts
       }, []);
 
+      const handleAddWinner = async () => {
+        try {
+          const response = await axios.post(
+            `https://oyster-app-wizuy.ondigitalocean.app/api/events/${id}/addWinner`,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+              }
+            }
+          );
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          // Handle errors
+        }
+      };
     if (error) return <p>{error}</p>
     if (isLoading) return  <p>Loading...</p>
     return (
@@ -100,7 +117,7 @@ const EventDetails = () => {
                                     </div>
                                 </div>
                                 {userData && userData.roles === 'ORGANIZER' && (
-                                     <button className="w-60 h-14 p-3 bg-purple rounded-lg text-white font-bold text-center hover:bg-accent">
+                                     <button onClick={handleAddWinner} className="w-60 h-14 p-3 bg-purple rounded-lg text-white font-bold text-center hover:bg-accent">
                                         Add a Winner
                                     </button>
                                 )}
